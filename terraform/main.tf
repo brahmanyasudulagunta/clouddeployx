@@ -1,9 +1,21 @@
-resource "aws_s3_bucket" "frontend_bucket" {
+module "frontend_bucket" {
 
-  bucket = var.bucket_name
+  source = "./modules/s3"
 
-  tags = {
-    Project = "CloudDeployX"
-    Owner   = "Ashrith"
-  }
+  bucket_name = var.bucket_name
+}
+
+module "iam" {
+  source = "./modules/iam"
+}
+
+module "hello_lambda" {
+
+  source = "./modules/lambda"
+
+  lambda_name = "clouddeployx-hello"
+
+  role_arn = module.iam.role_arn
+
+  zip_file = "../backend/lambda/hello/lambda.zip"
 }
