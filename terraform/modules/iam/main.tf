@@ -22,3 +22,27 @@ resource "aws_iam_role_policy_attachment" "basic_execution" {
 
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
+
+resource "aws_iam_role_policy" "dynamodb_access" {
+
+  name = "visitor-dynamodb-policy"
+
+  role = aws_iam_role.lambda_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+
+    Statement = [
+      {
+        Effect = "Allow"
+
+        Action = [
+          "dynamodb:GetItem",
+          "dynamodb:UpdateItem"
+        ]
+
+        Resource = "*"
+      }
+    ]
+  })
+}
