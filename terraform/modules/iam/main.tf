@@ -38,10 +38,11 @@ resource "aws_iam_role_policy" "dynamodb_access" {
 
         Action = [
           "dynamodb:GetItem",
-          "dynamodb:UpdateItem"
+          "dynamodb:UpdateItem",
+          "dynamodb:putItem"
         ]
 
-        Resource = "*"
+        Resource = var.dynamodb_table_arns
       }
     ]
   })

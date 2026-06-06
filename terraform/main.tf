@@ -7,6 +7,11 @@ module "frontend_bucket" {
 
 module "iam" {
   source = "./modules/iam"
+
+  dynamodb_table_arns = [
+    module.dynamodb.table_arn,
+    module.contact_table.table_arn
+  ]
 }
 
 module "hello_lambda" {
@@ -36,4 +41,22 @@ module "visitor_lambda" {
   role_arn = module.iam.role_arn
 
   zip_file = "../backend/lambda/visitor-counter/visitor.zip"
+}
+
+module "contact_table" {
+
+  source = "./modules/dynamodb"
+
+  table_name = "clouddeployx-contacts"
+}
+
+module "contact_lambda" {
+
+  source = "./modules/lambda"
+
+  lambda_name = "clouddeployx-contact"
+
+  role_arn = module.iam.role_arn
+
+  zip_file = "../backend/lambda/contact-form/contact.zip"
 }
