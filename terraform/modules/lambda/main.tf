@@ -12,3 +12,14 @@ resource "aws_lambda_function" "lambda" {
 
   source_code_hash = filebase64sha256(var.zip_file)
 }
+
+resource "aws_lambda_permission" "api_gateway" {
+
+  statement_id  = "AllowExecutionFromAPIGateway"
+
+  action        = "lambda:InvokeFunction"
+
+  function_name = aws_lambda_function.lambda.function_name
+
+  principal = "apigateway.amazonaws.com"
+}

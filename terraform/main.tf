@@ -60,3 +60,12 @@ module "contact_lambda" {
 
   zip_file = "../backend/lambda/contact-form/contact.zip"
 }
+
+module "api_gateway" {
+
+  source = "./modules/api_gateway"
+
+  visitor_lambda_arn = module.visitor_lambda.lambda_arn
+
+  contact_lambda_arn = module.contact_lambda.lambda_arn
+}
