@@ -14,17 +14,6 @@ module "iam" {
   ]
 }
 
-module "hello_lambda" {
-
-  source = "./modules/lambda"
-
-  lambda_name = "clouddeployx-hello"
-
-  role_arn = module.iam.role_arn
-
-  zip_file = "../backend/lambda/hello/lambda.zip"
-}
-
 module "dynamodb" {
 
   source = "./modules/dynamodb"

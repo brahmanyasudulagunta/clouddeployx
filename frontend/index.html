@@ -2,9 +2,65 @@
 <html>
 <head>
     <title>CloudDeployX</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>CloudDeployX</h1>
-    <p>My first AWS hosted website.</p>
+
+<h1>CloudDeployX</h1>
+
+<h2>Projects</h2>
+
+<ul>
+    <li>AWS Serverless Platform</li>
+    <li>Terraform Infrastructure</li>
+    <li>GitHub Actions CI/CD</li>
+</ul>
+
+<h2>Visitors</h2>
+
+<p id="visitor-count">
+Loading...
+</p>
+
+<h2>Contact Me</h2>
+
+<form id="contact-form">
+
+    <input
+        type="text"
+        id="name"
+        placeholder="Name"
+        required
+    >
+
+    <br><br>
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Email"
+        required
+    >
+
+    <br><br>
+
+    <textarea
+        id="message"
+        placeholder="Message"
+        required
+    ></textarea>
+
+    <br><br>
+
+    <button type="submit">
+        Submit
+    </button>
+
+</form>
+
+<p id="response"></p>
+
+<script src="js/app.js"></script>
+
 </body>
 </html>
