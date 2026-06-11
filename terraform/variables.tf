@@ -4,4 +4,5 @@ variable "aws_region" {
 
 variable "bucket_name" {
   description = "CloudDeployX frontend bucket"
+  default     = "clouddeploy-ashrith-2026"
 }
