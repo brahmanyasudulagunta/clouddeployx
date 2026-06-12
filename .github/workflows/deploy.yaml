@@ -45,3 +45,15 @@ jobs:
       - name: Terraform Plan
         working-directory: terraform
         run: terraform plan -input=false
+
+      - name: Terraform Apply
+        working-directory: terraform
+        run: terraform apply -auto-approve
+
+      - name: Upload Frontend
+
+        run: |
+              aws s3 sync \
+              frontend/ \
+              s3://clouddeployx-ashrith-2026 \
+              --delete
