@@ -56,4 +56,3 @@ jobs:
               aws s3 sync \
               frontend/ \
               s3://clouddeployx-ashrith-2026 \
-              --delete
